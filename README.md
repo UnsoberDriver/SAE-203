@@ -67,9 +67,6 @@ A few things I put in place while learning about the topic:
 
 * [https://sae203-nb.alwaysdata.net/index.php](https://sae203-nb.alwaysdata.net/index.php)
 
-## Legal notices
-* [Legal notice](https://homekitchenclub.alwaysdata.net/mentions-legales)
-
 ## Author
 
 Nicolas Boulloud — [LinkedIn](https://www.linkedin.com/in/nicolas-boulloud/)
