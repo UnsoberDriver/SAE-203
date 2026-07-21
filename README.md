@@ -2,7 +2,7 @@
 
 ## Server structure
 
-The web root (document root) is **`www/public/`**. Anything that needs to be
+The web root is **`www/public/`**. Anything that needs to be
 reachable from the browser must live inside this folder.
 
 ```
