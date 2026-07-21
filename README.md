@@ -62,34 +62,26 @@ www/
   path **relative to its own location**, using `__DIR__`, e.g.:
   - from `public/lieu.php` → `__DIR__ . '/../includes/db.php'`
 
-## Fixes applied
+## Security
 
-1. **CSS not loading (404)** — the `<link rel="stylesheet">` in `index.php`
-   pointed to the wrong path / had a corrupted `rel` attribute. Fixed to
-   point to `assets/css/styles.css`.
-2. **Bootstrap CSS not loading** — the `rel` attribute of the Bootstrap
-   `<link>` tag was `rel="/assets/css/stylesheet"` instead of
-   `rel="stylesheet"`, which prevented modals from staying hidden by
-   default (they were rendering full-page).
-3. **`films_vote.php` returning 404** — the `vote/` folder lived at
-   `www/vote/`, outside the web root (`www/public/`). Moved it to
-   `www/public/vote/` and updated all AJAX calls in `index.php` with the
-   `vote/` prefix.
-4. **"Voter films" button doing nothing** — the `data-bs-dismiss="modal"`
-   attribute on `#btn-modal-voter` and `#btn-modal-voter-lieu` closed the
-   `modalParticiper` modal at the same time the JS tried to open the next
-   one (`modalVote` / `modalVoteLieu`), causing a Bootstrap backdrop
-   conflict. Removed the attribute and added a manual `hide()` of the
-   previous modal before opening the next one.
-5. **`connexion.php` not found** — `films_vote.php` used
-   `require_once 'connexion.php'` (an obsolete file, replaced by an `.env` +
-   `includes/db.php` setup). Fixed to
-   `require_once __DIR__ . '/../../includes/db.php';`.
+A few things I put in place while learning about the topic:
 
-## Deployment
+* Passwords hashed with `password_hash` / `password_verify`
+* Prepared SQL statements (PDO) everywhere, no query concatenation
+* CSRF protection on sensitive forms (contact, recipe creation/editing)
+* "Remember me" cookie based on a hashed selector/validator pair (no plaintext token stored server-side), rotated on every use
 
-1. Edit files locally.
-2. Re-upload via FTP to the correct folder under `www/public/` (respect the
-   structure above).
-3. Test with the browser console (F12 → Console / Network) to spot any
-   404s or PHP errors.
+## Live
+
+* [https://sae203-nb.alwaysdata.net/index.php](https://sae203-nb.alwaysdata.net/index.php)
+
+## Legal notices
+* [Legal notice](https://homekitchenclub.alwaysdata.net/mentions-legales)
+
+## Author
+
+Nicolas Boulloud — [LinkedIn](https://www.linkedin.com/in/nicolas-boulloud/)
+
+## License
+
+© 2026 Nicolas Boulloud. All rights reserved.
