@@ -1,4 +1,18 @@
 # Soirées / Vote Project
+SAE203 is a school project (BUT Informatique) built to organize themed movie nights with a group: propose a date, a location, a film lineup, and let everyone vote to decide what actually gets picked. Built in PHP with MySQL, no framework.
+
+## What it does
+Recipe list filterable by category, with a detailed page per recipe (ingredients, steps, time, difficulty)
+Live serving adjustment on the recipe page (quantities recalculated in JS)
+User accounts: sign up / log in, with a "stay logged in" option (remember-me secured by token)
+Admin dashboard to create, edit, and delete recipes
+Image upload, automatically converted to AVIF + thumbnail generation
+Contact form in a popup (AJAX, protected by a CSRF token)
+Bilingual FR/EN site, auto-detected based on browser language
+
+## Stack
+
+Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool. Images go through GD for AVIF conversion (requires PHP 8.1+).
 
 ## Server structure
 
