@@ -72,17 +72,6 @@ www/
    `includes/db.php` setup). Fixed to
    `require_once __DIR__ . '/../../includes/db.php';`.
 
-## To check / remaining work
-
-- [ ] Check whether `lieu_vote.php`, `lieux_candidats.php`,
-      `lieux_soiree.php` and `soirees_vote.php` (in `public/vote/`) still
-      use `require_once 'connexion.php'` and fix them the same way if
-      needed.
-- [ ] Confirm that `includes/db.php` correctly reads the `.env` at the
-      server root for the database credentials.
-- [ ] Clear browser cache / force reload after each upload to avoid
-      testing a stale version of the files.
-
 ## Deployment
 
 1. Edit files locally.
