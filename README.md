@@ -8,9 +8,14 @@ reachable from the browser must live inside this folder.
 ```
 www/
 ├── admin/
+│   ├── admin_auth.php
+│   ├── admin_dashboard.php
+│   └── admin_login.php
 ├── includes/
-│   └── db.php          # database connection (reads the .env)
-├── public/              # ← web root (document root)
+│   ├── db.php           # database connection (reads the .env)
+│   ├── login.php
+│   └── login_auth.php
+├── public/               # ← web root (document root)
 │   ├── assets/
 │   │   └── css/
 │   │       └── styles.css
