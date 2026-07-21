@@ -54,14 +54,6 @@ www/
 └── .env
 ```
 
-## General path rule
-
-- All links/AJAX calls in `index.php` are **relative to `public/`**
-  (e.g. `assets/css/styles.css`, `vote/films_vote.php`).
-- Any PHP file that needs the database must include `includes/db.php` with a
-  path **relative to its own location**, using `__DIR__`, e.g.:
-  - from `public/lieu.php` → `__DIR__ . '/../includes/db.php'`
-
 ## Security
 
 A few things I put in place while learning about the topic:
