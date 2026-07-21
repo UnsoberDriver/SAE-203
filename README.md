@@ -1,4 +1,4 @@
-# Soirées / Vote Project
+# Vote Project
 SAE203 is a school project (BUT Informatique) built to organize themed movie nights with a group: propose a date, a location, a film lineup, and let everyone vote to decide what actually gets picked. Built in PHP with MySQL, no framework.
 
 ## What it does
