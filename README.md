@@ -47,7 +47,6 @@ www/
 - Any PHP file that needs the database must include `includes/db.php` with a
   path **relative to its own location**, using `__DIR__`, e.g.:
   - from `public/lieu.php` → `__DIR__ . '/../includes/db.php'`
-  - from `public/vote/films_vote.php` → `__DIR__ . '/../../includes/db.php'`
 
 ## Fixes applied
 
