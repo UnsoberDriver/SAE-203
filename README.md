@@ -12,10 +12,10 @@ www/
 │   ├── admin_dashboard.php
 │   └── admin_login.php
 ├── includes/
-│   ├── db.php           # database connection (reads the .env)
+│   ├── db.php
 │   ├── login.php
 │   └── login_auth.php
-├── public/               # ← web root (document root)
+├── public/
 │   ├── assets/
 │   │   └── css/
 │   │       └── styles.css
@@ -37,7 +37,7 @@ www/
 │   ├── soiree_card.php
 │   ├── traitement.php
 │   └── vote_results.php
-└── .env                  # DB connection variables (server root)
+└── .env
 ```
 
 ## General path rule
