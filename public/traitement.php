@@ -1,5 +1,5 @@
 <?php
-require_once 'connexion.php';
+require_once __DIR__ . '/../includes/db.php';
 
 if (!$conn) {
     die("Erreur de connexion : " . mysqli_connect_error());

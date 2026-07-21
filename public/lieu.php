@@ -1,5 +1,5 @@
 <?php
-require_once 'connexion.php';
+require_once __DIR__ . '/../includes/db.php';
 
 $result = mysqli_query($conn, "SELECT DISTINCT lieu FROM soiree WHERE lieu IS NOT NULL AND lieu != '' ORDER BY lieu");
 

@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 
 </head>
 
@@ -226,7 +226,7 @@
                     currentSoireeId = id;
 
                     $.ajax({
-                        url: 'films_vote.php?id_soiree=' + id,
+                        url: 'vote/films_vote.php?id_soiree=' + id,
                         method: 'GET',
                         dataType: 'json',
                         success: function (films) {
@@ -261,7 +261,7 @@
 
                 function chargerSoireesVote() {
                     $.ajax({
-                        url: 'soirees_vote.php',
+                        url: 'vote/soirees_vote.php',
                         method: 'GET',
                         success: function (data) {
                             var soirees = (typeof data === "string") ? JSON.parse(data) : data;
@@ -281,7 +281,7 @@
                     var id = $(this).data('id');
                     var nom = $(this).data('nom');
                     $.ajax({
-                        url: 'films_vote.php?id_soiree=' + id,
+                        url: 'vote/films_vote.php?id_soiree=' + id,
                         method: 'GET',
                         dataType: 'json',
                         success: function (films) {
@@ -303,16 +303,16 @@
 
                 // ── Mapping genre → image ───────────────────────────
                 var genreImages = {
-                    'horreur': './img/horreur.jpg',
-                    'romance': './img/romance.jpg',
-                    'action': './img/action.jpg',
-                    'comedie': './img/comedie.jpg',
-                    'aventure': './img/aventure.jpg',
-                    'science_fiction': './img/science_fiction.jpg',
-                    'western': './img/western.jpg',
-                    'acteur': './img/acteur.jpg',
-                    'directeur': './img/directeur.jpg',
-                    'default': './img/romance.jpg'
+                    'horreur': 'img/horreur.jpg',
+                    'romance': 'img/romance.jpg',
+                    'action': 'img/action.jpg',
+                    'comedie': 'img/comedie.jpg',
+                    'aventure': '/img/aventure.jpg',
+                    'science_fiction': 'img/science_fiction.jpg',
+                    'western': 'img/western.jpg',
+                    'acteur': 'img/acteur.jpg',
+                    'directeur': 'img/directeur.jpg',
+                    'default': 'img/romance.jpg'
                 };
 
                 function getImageGenre(genre) {
@@ -785,7 +785,7 @@
                 });
 
                 $.ajax({
-                    url: 'films_vote.php',
+                    url: 'vote/films_vote.php',
                     method: 'POST',
                     contentType: 'application/json',
                     dataType: 'json',
@@ -834,7 +834,7 @@
             // Remplace `id_soiree` par l'id réel de la soirée sélectionnée.
 
             async function chargerVoteLieu(id_soiree) {
-                const res = await fetch(`lieux_soiree.php?id_soiree=${id_soiree}`);
+                const res = await fetch(`vote/lieux_soiree.php?id_soiree=${id_soiree}`);
                 const lieux = await res.json();
                 const container = document.getElementById('lieux-classement');
                 container.innerHTML = '';
@@ -895,7 +895,7 @@
                     note_lieu: total - idx
                 }));
 
-                const res = await fetch('lieu_vote.php', {
+                const res = await fetch('vote/lieu_vote.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id_soiree: id_soiree, votes: votes })

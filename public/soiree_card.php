@@ -1,5 +1,5 @@
 <?php
-require_once 'connexion.php';
+require_once __DIR__ . '/../includes/db.php';
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $lieu   = isset($_GET['lieu'])   ? mysqli_real_escape_string($conn, $_GET['lieu'])   : '';

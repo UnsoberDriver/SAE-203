@@ -1,5 +1,5 @@
 <?php
-require_once 'connexion.php';
+require_once __DIR__ . '/../includes/db.php';
 $id_soiree = intval($_GET['id_soiree'] ?? 0);
 
 // Résultats films (on exclut les lignes lieu_ qui ne sont pas de vrais films)
