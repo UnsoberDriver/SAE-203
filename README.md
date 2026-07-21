@@ -1,16 +1,16 @@
-# Projet Soirées / Vote
+# Soirées / Vote Project
 
-## Structure du serveur
+## Server structure
 
-La racine web (document root) est **`www/public/`**. Tout ce qui doit être
-accessible depuis le navigateur doit se trouver dans ce dossier.
+The web root (document root) is **`www/public/`**. Anything that needs to be
+reachable from the browser must live inside this folder.
 
 ```
 www/
 ├── admin/
 ├── includes/
-│   └── db.php          # connexion à la base de données (lit le .env)
-├── public/              # ← racine web (document root)
+│   └── db.php          # database connection (reads the .env)
+├── public/              # ← web root (document root)
 │   ├── assets/
 │   │   └── css/
 │   │       └── styles.css
@@ -32,58 +32,57 @@ www/
 │   ├── soiree_card.php
 │   ├── traitement.php
 │   └── vote_results.php
-└── .env                  # variables de connexion BDD (racine du serveur)
+└── .env                  # DB connection variables (server root)
 ```
 
-## Règle générale des chemins
+## General path rule
 
-- Tous les liens/appels AJAX dans `index.php` sont **relatifs à `public/`**
-  (ex: `assets/css/styles.css`, `vote/films_vote.php`).
-- Tous les fichiers PHP qui ont besoin de la BDD doivent inclure
-  `includes/db.php` avec un chemin **relatif à leur propre emplacement** via
-  `__DIR__`, par exemple :
-  - depuis `public/lieu.php` → `__DIR__ . '/../includes/db.php'`
-  - depuis `public/vote/films_vote.php` → `__DIR__ . '/../../includes/db.php'`
+- All links/AJAX calls in `index.php` are **relative to `public/`**
+  (e.g. `assets/css/styles.css`, `vote/films_vote.php`).
+- Any PHP file that needs the database must include `includes/db.php` with a
+  path **relative to its own location**, using `__DIR__`, e.g.:
+  - from `public/lieu.php` → `__DIR__ . '/../includes/db.php'`
+  - from `public/vote/films_vote.php` → `__DIR__ . '/../../includes/db.php'`
 
-## Corrections effectuées
+## Fixes applied
 
-1. **CSS non chargé (404)** — le lien `<link rel="stylesheet">` dans
-   `index.php` pointait vers un mauvais chemin / avait un attribut `rel`
-   corrompu. Corrigé pour pointer vers `assets/css/styles.css`.
-2. **Bootstrap CSS non chargé** — l'attribut `rel` de la balise `<link>`
-   Bootstrap était `rel="/assets/css/stylesheet"` au lieu de
-   `rel="stylesheet"`, ce qui empêchait les modals de rester cachées par
-   défaut (elles s'affichaient en pleine page).
-3. **`films_vote.php` en 404** — le dossier `vote/` se trouvait à
-   `www/vote/`, hors de la racine web (`www/public/`). Déplacé dans
-   `www/public/vote/` et tous les appels AJAX dans `index.php` mis à jour
-   avec le préfixe `vote/`.
-4. **Bouton "Voter films" inactif** — l'attribut `data-bs-dismiss="modal"`
-   sur les boutons `#btn-modal-voter` et `#btn-modal-voter-lieu` fermait le
-   modal `modalParticiper` en même temps que le JS tentait d'ouvrir le
-   modal suivant (`modalVote` / `modalVoteLieu`), créant un conflit de
-   backdrop Bootstrap. Retiré l'attribut et ajouté un `hide()` manuel de
-   l'ancien modal avant l'ouverture du suivant.
-5. **`connexion.php` introuvable** — `films_vote.php` utilisait
-   `require_once 'connexion.php'` (fichier obsolète, remplacé par un
-   système `.env` + `includes/db.php`). Corrigé en
+1. **CSS not loading (404)** — the `<link rel="stylesheet">` in `index.php`
+   pointed to the wrong path / had a corrupted `rel` attribute. Fixed to
+   point to `assets/css/styles.css`.
+2. **Bootstrap CSS not loading** — the `rel` attribute of the Bootstrap
+   `<link>` tag was `rel="/assets/css/stylesheet"` instead of
+   `rel="stylesheet"`, which prevented modals from staying hidden by
+   default (they were rendering full-page).
+3. **`films_vote.php` returning 404** — the `vote/` folder lived at
+   `www/vote/`, outside the web root (`www/public/`). Moved it to
+   `www/public/vote/` and updated all AJAX calls in `index.php` with the
+   `vote/` prefix.
+4. **"Voter films" button doing nothing** — the `data-bs-dismiss="modal"`
+   attribute on `#btn-modal-voter` and `#btn-modal-voter-lieu` closed the
+   `modalParticiper` modal at the same time the JS tried to open the next
+   one (`modalVote` / `modalVoteLieu`), causing a Bootstrap backdrop
+   conflict. Removed the attribute and added a manual `hide()` of the
+   previous modal before opening the next one.
+5. **`connexion.php` not found** — `films_vote.php` used
+   `require_once 'connexion.php'` (an obsolete file, replaced by an `.env` +
+   `includes/db.php` setup). Fixed to
    `require_once __DIR__ . '/../../includes/db.php';`.
 
-## À vérifier / reste à faire
+## To check / remaining work
 
-- [ ] Vérifier si `lieu_vote.php`, `lieux_candidats.php`, `lieux_soiree.php`
-      et `soirees_vote.php` (dans `public/vote/`) utilisent encore
-      `require_once 'connexion.php'` et les corriger de la même façon si
-      besoin.
-- [ ] Confirmer que `includes/db.php` lit bien le `.env` à la racine du
-      serveur pour les identifiants de connexion à la base de données.
-- [ ] Vider le cache navigateur / forcer un rechargement après chaque
-      upload pour éviter de tester une version obsolète des fichiers.
+- [ ] Check whether `lieu_vote.php`, `lieux_candidats.php`,
+      `lieux_soiree.php` and `soirees_vote.php` (in `public/vote/`) still
+      use `require_once 'connexion.php'` and fix them the same way if
+      needed.
+- [ ] Confirm that `includes/db.php` correctly reads the `.env` at the
+      server root for the database credentials.
+- [ ] Clear browser cache / force reload after each upload to avoid
+      testing a stale version of the files.
 
-## Déploiement
+## Deployment
 
-1. Modifier les fichiers en local.
-2. Réuploader via FTP dans le bon dossier de `www/public/` (respecter
-   l'arborescence ci-dessus).
-3. Tester avec la console navigateur (F12 → Console / Network) pour
-   repérer d'éventuelles erreurs 404 ou PHP.
+1. Edit files locally.
+2. Re-upload via FTP to the correct folder under `www/public/` (respect the
+   structure above).
+3. Test with the browser console (F12 → Console / Network) to spot any
+   404s or PHP errors.
