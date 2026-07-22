@@ -20,38 +20,39 @@ The web root is **`www/public/`**. Anything that needs to be
 reachable from the browser must live inside this folder.
 
 ```
+.env
 www/
-├── admin/
-│   ├── admin_auth.php
-│   ├── admin_dashboard.php
-│   └── admin_login.php
-├── includes/
-│   ├── db.php
-│   ├── login.php
-│   └── login_auth.php
-├── public/
-│   ├── assets/
-│   │   └── css/
-│   │       └── styles.css
-│   ├── img/
-│   ├── vote/
-│   │   ├── films_vote.php
-│   │   ├── lieu_vote.php
-│   │   ├── lieux_candidats.php
-│   │   ├── lieux_soiree.php
-│   │   └── soirees_vote.php
-│   ├── formulaire.php
-│   ├── index.php
-│   ├── inscription.php
-│   ├── lieu.php
-│   ├── logout.php
-│   ├── profil.php
-│   ├── quitter_soiree.php
-│   ├── session_user.php
-│   ├── soiree_card.php
-│   ├── traitement.php
-│   └── vote_results.php
-└── .env
+└── admin/
+    │    ├── admin_auth.php
+    │├── admin_dashboard.php
+    │└── admin_login.php
+    │├── includes/
+    │    ├── db.php
+    │    ├── login.php
+    │    └── login_auth.php
+    │    ├── public/
+    │    ├── assets/
+    │   └── css/
+    │       └── styles.css
+    ├── img/
+    ├── vote/
+    │   ├── films_vote.php
+    │   ├── lieu_vote.php
+    │   ├── lieux_candidats.php
+    │   ├── lieux_soiree.php
+    │   └── soirees_vote.php
+    ├── formulaire.php
+    ├── index.php
+    ├── inscription.php
+    ├── lieu.php
+    ├── logout.php
+    ├── profil.php
+    ├── quitter_soiree.php
+    ├── session_user.php
+    ├── soiree_card.php
+    ├── traitement.php
+    └── vote_results.php
+
 ```
 
 ## Security
