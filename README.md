@@ -23,37 +23,36 @@ reachable from the browser must live inside this folder.
 
 ```
 /
-├── .env                        # Variables d'environnement (DB, secrets) — non versionné
-├── admin/                      # Espace d'administration
+├── .env                             # Variables d'environnement (DB, secrets) — non versionné
+├── admin/                           # Espace d'administration
+├── includes/                        # Fichiers techniques partagés
+│   └── db.php                       # Connexion à la base de données (PDO)
 │
 └── www/
     └── public/
-        ├── index.php            # Page d'accueil / point d'entrée principal
+        ├── index.php                # Page d'accueil / point d'entrée principal
         │
-        ├── assets/               # Ressources statiques
+        ├── assets/                  # Ressources statiques
         │   ├── css/
         │   │   └── styles.css
         │   └── img/
         │
-        ├── includes/             # Fichiers techniques partagés
-        │   └── db.php             # Connexion à la base de données (PDO)
-        │
-        ├── auth/                 # Authentification
+        ├── auth/                    # Authentification
         │   ├── login.php
         │   └── inscription.php
         │
-        ├── user/                 # Gestion de session utilisateur
-        │   ├── login_auth.php     # Traitement de la connexion
+        ├── user/                    # Gestion de session utilisateur
+        │   ├── login_auth.php       # Traitement de la connexion
         │   ├── logout.php
-        │   └── session_user.php   # Vérification de session
+        │   └── session_user.php     # Vérification de session
         │
-        ├── profil/                # Profil utilisateur
+        ├── profil/                  # Profil utilisateur
         │   └── profil.php
         │
-        ├── lieu/                  # Gestion des lieux
+        ├── lieu/                    # Gestion des lieux
         │   └── lieu.php
         │
-        ├── soiree/                 # Gestion des soirées / événements
+        ├── soiree/                  # Gestion des soirées / événements
         │   ├── formulaire.php       # Création / édition d'une soirée
         │   ├── soiree_card.php      # Affichage d'une carte "soirée"
         │   └── quitter_soiree.php   # Sortie d'une soirée
