@@ -19,17 +19,18 @@ reachable from the browser must live inside this folder.
 /
 ├── .env                             # Variables d'environnement (DB, secrets) — non versionné
 ├── admin/                           # Espace d'administration
-├── includes/                        # Fichiers techniques partagés
-│   └── db.php                       # Connexion à la base de données (PDO)
 │
 └── www/
+    ├── includes/                        # Fichiers techniques partagés
+    │   └── db.php                       # Connexion à la base de données (PDO)
+    │
     └── public/
-        ├── index.php                # Page d'accueil / point d'entrée principal
         │
         ├── assets/                  # Ressources statiques
         │   ├── css/
         │   │   └── styles.css
         │   └── img/
+        │       └── pictures
         │
         ├── auth/                    # Authentification
         │   ├── login.php
@@ -53,6 +54,8 @@ reachable from the browser must live inside this folder.
         │
         ├── traitement/              # Traitements divers (formulaires, actions)
         │   └── traitement.php
+        │
+        ├── index.php                # Page d'accueil / point d'entrée principal
         │
         └── vote/                    # Système de vote
             ├── films_vote.php
