@@ -13,7 +13,7 @@ Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool.
 The web root is **`www/public/`**. Anything that needs to be
 reachable from the browser must live inside this folder.
 
-## 🏗️ Architecture du projet
+## Architecture du projet
 
 ```
 /
